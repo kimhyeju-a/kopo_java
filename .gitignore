@@ -1,0 +1,5 @@
+.metadata/
+java/.classpath
+java/.project
+java/.settings/org.eclipse.jdt.core.prefs
+java/doc/
