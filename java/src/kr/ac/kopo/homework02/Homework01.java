@@ -14,8 +14,32 @@ public class Homework01 {
 		//JVM이 프로그램이 종료되더라도 System.in을 제대로 종료시키지 않기 때문에 I/O와 관련된 것들은 close로 종료시켜야 Resource leak 경고가 나지 않는다
 		sc.close();
 		
-		//나올 수 있는 경우의 수 : abc, acb, bac, bca, cab, cba
-		if(a > b) {
+		
+		/*
+		혜주씨 조건문 쓰다가 머리 아파오지 않았어요???? 조건을 조금 줄여서 할 수 있는 방법을 생각해볼까요?????
+		
+		==> 수정완료
+		*/
+		
+		int min = a, max = b;
+		//a와 b를 비교해 max 와 min을 수정
+		if(a < b) {
+			min = b;
+			max = a;
+		}
+		//c가 제일 큰경우
+		if(c > max) {
+			System.out.printf("%d %d %d",c ,max , min);
+		}else if(c > min) {
+			System.out.printf("%d %d %d",max ,c , min);
+		}else {
+			System.out.printf("%d %d %d",max ,min , c);
+		}
+		
+		
+		/*
+		 * 피드백 받기 전, 코드
+		if(a > b && b > c ) { 
 			if(b > c) {
 				//a > b > c
 				System.out.printf("%d %d %d",a ,b, c);
@@ -43,5 +67,6 @@ public class Homework01 {
 				System.out.printf("%d %d %d", c, b, a);
 			}
 		}
+		*/
 	}
 }
