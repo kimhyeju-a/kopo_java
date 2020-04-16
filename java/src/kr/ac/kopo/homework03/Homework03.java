@@ -22,12 +22,60 @@ import java.util.Scanner;
 	 < REVERSE >
 	 76 4 63 21 1 
  */
+/*	수정 완료!
+	혜주씨 과제하느라 고생하셨어요~~
+	근데 reverse요... 결과 잘보세요.
+	제가 원했던대로 출력이 되지는 않아요.
+	조금만 수정해주시면 될거 같습니다
+
+	그리고 작은수 입력시 다시 입력하게 하는 체크문장 코드가 좀 복잡하죠???
+	조금더 효율적으로 작성할 수 있는 방법을 생각해봅시다!!!
+*/
 public class Homework03 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int[] arr = new int[5];
-		int idx = 0;
 		
+		for(int i = 0; i < arr.length;) {
+			System.out.print(i+1 +"번째 정수 : ");
+			arr[i] = Integer.parseInt(sc.nextLine());
+			if(i > 0 &&arr[i-1] >= arr[i]) {
+				for(int j = 0; j < i ; j++) {
+					//다시보기
+					if(j != 0) {
+						System.out.print(", ");
+					}
+					System.out.print(arr[j] + " ");
+				}
+				System.out.println("보다 큰수를 입력");
+			}else {
+				i++;
+			}
+		}
+
+		System.out.println("< PRINT >");
+		for(int num : arr) {
+			System.out.print(num + "\t");
+		}
+		System.out.println();
+		System.out.println("\n< REVERSE >");
+		
+		//역순 후, 다시 배열로 넣는 코드
+		for(int i = 0 ; i < 5; i++) {
+			int num = arr[i];
+			arr[i] = 0;
+			while(num != 0) {
+				arr[i] = arr[i] * 10 + num % 10;
+				num = num / 10;
+			}
+
+		}
+		for(int i = arr.length-1; i >= 0; i--) {
+			System.out.print(arr[i]+"\t");
+		}
+		
+		
+		/*
 		for(int i = 0; i < 5; i++) {
 			System.out.print(i+1 +"번째 정수 : ");
 			arr[i] = sc.nextInt();
@@ -65,15 +113,12 @@ public class Homework03 {
 				arr[i] = arr[i] * 10 + num % 10;
 				num = num / 10;
 			}
-			/*
-				823의 경우 while 들어갔을때
-				arr[i] = 0 * 10 + 3 -> 3 * 10 + 2 -> 32 * 10 + 8 
-				
-			 */
+
 		}
 		for(int i = 0; i < 5; i++) {
 			System.out.print(arr[i]+" ");
 		}
 		
+		*/
 	}
 }
