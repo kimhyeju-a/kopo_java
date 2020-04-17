@@ -8,8 +8,18 @@ public class MethodMain01 {
 		}
 		System.out.println();
 	}
+	static int factorial(int n) {
+		int result = 1;
+		for(int i = n; i <= 1; i--) {
+			result = result *i;
+		}
+		return result;
+	}
 	//호출자 메소드
 	public static void main(String[] args) {
+		
+		int result = factorial(3);
+		System.out.println("3! ==> " + result);
 		printStar('*', 10);
 		System.out.println("Hello");
 		printStar('#', 5);
