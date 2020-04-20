@@ -23,6 +23,8 @@ public class Employee {
 	}
 	
 	static public void totalEmployeeInfo() {
+		//static은 nonStatic보다 빠르게 만들어져있기 떄문에 에러가난다.
+		//name = "윤길동";
 		System.out.println("입사한 총 사원수 : " + Employee.totalEmployeeCount + "명");
 	}
 }
