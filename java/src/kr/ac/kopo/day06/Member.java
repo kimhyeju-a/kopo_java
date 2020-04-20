@@ -14,7 +14,6 @@ public class Member {
 	
 	Member(String name, int age){
 		this(name, age, "알수없음");
-
 	}
 	
 	/*
