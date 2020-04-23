@@ -23,6 +23,8 @@ public class Manager extends Employee {
 		this.empList = empList;
 	}
 	
+	//오버라이딩
+ 	@Override
 	public void info() {
 		//this.info()를 하게 되면 manager02의 this인지 employee의 info인지 알수 없어 스택오버플로우가 나온다.
 		super.info();
