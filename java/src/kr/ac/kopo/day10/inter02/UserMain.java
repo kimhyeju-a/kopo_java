@@ -14,5 +14,7 @@ public class UserMain {
 		tv.mute();
 		tv.channeUp();
 		tv.togglePower();		
+		
+		tv.copyright();
 	}
 }
