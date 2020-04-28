@@ -8,7 +8,6 @@ public class OddException extends Exception {
 
 	public OddException(String arg0) {
 		super(arg0);
-		System.out.println(arg0);
 	}
 
 }

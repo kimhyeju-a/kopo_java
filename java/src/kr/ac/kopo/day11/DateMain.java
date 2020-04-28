@@ -1,5 +1,6 @@
 package kr.ac.kopo.day11;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //import kr.ac.kopo.day08.Icecream;
@@ -9,6 +10,11 @@ import java.util.Date;
 public class DateMain {
 
 	public static void main(String[] args) {
+		
+		String pattern = "오늘은 yyyy년 MM월 dd일(E요일)입니다.";
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		
+		System.out.println(sdf.format(new Date()));		
 		
 //		Icecream ice = new Icecream("aaa" , 1000);
 //		System.out.println("ice : " + ice);
@@ -24,5 +30,7 @@ public class DateMain {
 		int month = d.getMonth() + 1;
 		int date = d.getDate();
 		System.out.println("오늘은 " + year + "년 " + month + "월 " + date +"일입니다.");
+		
+		
 	}
 }
