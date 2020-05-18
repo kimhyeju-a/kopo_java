@@ -15,7 +15,7 @@ public class SetMain {
 	public static void main(String[] args) {
 		
 		Set<String> set = new HashSet<>();
-		set = new TreeSet<String>();
+//		set = new TreeSet<String>();
 		
 		System.out.println("입력 전 set의 데이터 총 개수 : " + set.size() + "개");
 		
