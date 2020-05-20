@@ -1,4 +1,4 @@
-package kr.ac.kopo.homework0519;
+package kr.ac.kopo.homework0519.consol;
 
 public class ConsolMain {
 

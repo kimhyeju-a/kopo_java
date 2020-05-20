@@ -1,4 +1,4 @@
-package kr.ac.kopo.homework0519;
+package kr.ac.kopo.homework0519.consol;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -8,17 +8,18 @@ import java.util.Scanner;
 public class ConsolView {
 	private Scanner sc;
 	private ConsolUtil cu;
-	File dirObj = null;
+//	public static File dirObj = null;
 	public ConsolView() {
 		sc = new Scanner(System.in);
+		cu = new ConsolUtil();
 	}
 	public void start() {
-		ConsolUtil.dirObj = askFolder();
+		ConsolUtil.dirObj = cu.firstDir();
 		while(true) {
 			startPrint(ConsolUtil.dirObj);
 			dirListPrint(ConsolUtil.dirObj);
 			cu = new ConsolUtil(ConsolUtil.dirObj);
-			System.out.println("[C]폴더생성  [R]이름수정  [D]삭제  [.]상위폴더이동  [m]하위이동폴더이동  [Q]종료");
+			System.out.println("[C]폴더생성  [R]이름수정  [D]삭제  [cd]폴더이동  [Q]종료");
 			System.out.print("선택 : ");
 			String mode = sc.nextLine();
 			switch(mode.toUpperCase()) {
@@ -26,41 +27,22 @@ public class ConsolView {
 				cu.createDir();
 				break;
 			case "R" :
-//				ConsolUtil.dirObj = cu.rename();
+				cu.rename();
 				break;
 			case "D" :
 				cu.delete();
 				break;
-			case "." :
-				cu.parentMove();
+			case "CD" :
+				cu.changeDir();
 				break;
-			case "m" :
-				cu.childMove();
-				break;
-			case "q" :
+			case "Q" :
 				System.out.println("종료합니다.");
 				System.exit(0);
 			}
 		}
 	}
 
-	private File askFolder() {
-		System.out.print("검색할 폴더명을 입력하세요 : ");
-		String folder = sc.nextLine();
-		ConsolUtil.dirObj = new File(folder);
-		while(true) {
-			if(ConsolUtil.dirObj.exists()) {
-				System.out.println("유효한 폴더명 입니다.");
-				break;
-			}else {
-				System.out.println("유효하지 않는 폴더명입니다.");
-				System.out.print("검색할 폴더명을 입력하세요 : ");
-				folder = sc.nextLine();
-				ConsolUtil.dirObj = new File(folder);				
-			}
-		}
-		return ConsolUtil.dirObj;
-	}	
+
 
 	private void startPrint(File dirObj) {
 		System.out.println("--------------------------------------------------------------------------");

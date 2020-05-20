@@ -8,14 +8,16 @@ import java.util.Date;
 public class DirMain2 {
 	
 	public static void main(String[] args) {
-		File dirObj = new File("test");
+		File dirObj = new File("test\\test2");
 		
 		boolean bool = dirObj.exists();
 		System.out.println(bool ? "유효한 디렉토리입니다." : "유효하지 않는 디렉토리입니다.");
 		
 		if(!bool) {
-			dirObj.mkdir();
+			System.out.println(dirObj.mkdir()? "만들었" : "아니");
 		}
+		
+		System.out.println("path : "+ dirObj.getPath());
 		//내폴더에 들어있는 여러개의 다른 아이들이 누구있냐 
 		String[] list = dirObj.list();
 		System.out.println("-------------------------------------");
@@ -24,6 +26,7 @@ public class DirMain2 {
 		for(String element : list) {
 			System.out.println(element);
 		}
+		System.out.println("getParent()" + dirObj.getParent());
 		System.out.println("-------------------------------------");
 		
 		//새로운 디렉토리 만들기 - 이미 만들어진 것은 생성 실패
@@ -31,6 +34,9 @@ public class DirMain2 {
 		System.out.println(newDirObj.mkdir()? "dir 생성 성공" : "dir 생성 실패");
 		String path = newDirObj.getPath();
 		String name = newDirObj.getName();
+		newDirObj = new File("iotest/하마/test");
+		System.out.println(newDirObj.getParent());
+		
 		System.out.println(path);
 		String[] path2 = path.split("\\\\");
 		System.out.println(Arrays.toString(path2));

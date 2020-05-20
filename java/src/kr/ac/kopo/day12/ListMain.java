@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import kr.ac.kopo.homework0519.board.Board;
+
 /*
  * List : 순서를 가지고 있음, 중복을 허용함.
  * 		- ArrayList
@@ -23,6 +25,7 @@ public class ListMain {
 		List<String> list = new ArrayList<>(); 			// v1.7 타입 생략가능
 		
 		list = new LinkedList<>();
+		List<Board> listb = new ArrayList<>();
 		
 		System.out.println("입력 전 list 원소의 총 개수 : " + list.size() + "개");
 		list.add("one");
