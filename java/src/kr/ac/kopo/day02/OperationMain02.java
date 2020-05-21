@@ -16,7 +16,7 @@ public class OperationMain02 {
 		System.out.println("MAX : " + max);
 		
 		System.out.println("MAX : " + (num > num2 ? num : num2));
-		String result = (num > num2 ? "num > num2 " : ( num  > num2 ? "num < num2" : "num == num2"));
+		String result = (num > num2 ? "num > num2 " : ( num  < num2 ? "num < num2" : "num == num2"));
 		System.out.println(result);
 	}
 
