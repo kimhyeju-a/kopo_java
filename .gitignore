@@ -7,3 +7,5 @@ java/bin/
 JarCalendar/
 *.classpath
 *.project
+*.txt
+*.jpg
