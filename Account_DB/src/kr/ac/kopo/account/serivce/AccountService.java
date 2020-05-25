@@ -31,5 +31,39 @@ public class AccountService {
 		List<AccountVO> list = accountDAO.selectAllAccount();
 		return list;
 	}
+	public List<AccountVO> accountSelectBank(int findBankNo) {
+		List<AccountVO> list = accountDAO.accountSelectBank(findBankNo);
+		return list;
+	}
+
+	public AccountVO accountSelectNoUI(String findAccountNo){
+		AccountVO list = accountDAO.accountSelectNoUI(findAccountNo);
+		return list;
+	}
+	public boolean modifyAlias(String modifyAccount, String modifyAlias) {
+		boolean bool = accountDAO.modifyAlias(modifyAccount, modifyAlias);
+		return bool;
+	}
+
+	public boolean deleteAccount(String deleteAccount) {
+		boolean bool = accountDAO.deleteAccount(deleteAccount);
+		return bool;
+	}
+
+	public boolean activateDeposit(String account, int money) {
+		boolean bool = accountDAO.activateDeposit(account,money);
+		return bool;
+	}
+
+	public boolean activateWithDraw(String account, int money) {
+		boolean bool = accountDAO.activateWithDraw(account, money);
+		return false;
+	}
+
+	public boolean activateTransFer(String fromAccount, String toAccount, int money) {
+		boolean bool = accountDAO.activateTransFer(fromAccount, toAccount, money);
+		return false;
+	}
+
 
 }

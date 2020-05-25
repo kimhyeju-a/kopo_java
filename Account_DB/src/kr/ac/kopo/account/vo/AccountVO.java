@@ -4,7 +4,7 @@ import kr.ac.kopo.account.user.vo.UserVO;
 
 public class AccountVO extends UserVO{
 
-	private int		userNo;			//사용자 개인 코드
+	public static int userNo;	//사용자 개인 코드
 	private String 	name;			//계좌주명
 	private String	accountNo;		//계좌번호
 	private int		bankNo;			//은행코드
@@ -16,12 +16,12 @@ public class AccountVO extends UserVO{
 	}
 	public AccountVO(int userNo, String name) {
 		super();
-		this.userNo = userNo;
+		AccountVO.userNo = userNo;
 		this.name = name;
 	}
 	public AccountVO(int userNo, String name, String accountNo, int bankNo, int balance, String alias) {
 		super();
-		this.userNo = userNo;
+		AccountVO.userNo = userNo;
 		this.name = name;
 		this.accountNo = accountNo;
 		this.bankNo = bankNo;
@@ -36,13 +36,19 @@ public class AccountVO extends UserVO{
 		this.alias = alias;
 	}
 	public AccountVO(int userNo) {
-		this.userNo = userNo;
+		AccountVO.userNo = userNo;
+	}
+	public AccountVO(String bankName, String accountNo, int balance, String alias) {
+		this.bankName = bankName;
+		this.accountNo = accountNo;
+		this.balance = balance;
+		this.alias = alias;
 	}
 	public int getUserNo() {
 		return userNo;
 	}
 	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+		AccountVO.userNo = userNo;
 	}
 	public String getName() {
 		return name;

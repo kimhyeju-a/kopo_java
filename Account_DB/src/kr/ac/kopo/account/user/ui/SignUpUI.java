@@ -6,12 +6,20 @@ public class SignUpUI extends BaseUI{
 
 	@Override
 	public void execute() throws Exception {
-
-		String id = scanStr("사용하실 id를 입력하세요			: ");
-		String pwd = scanStr("사용하실 비밀번호를 입력하세요		: ");
-		String name = scanStr("사용자 명을 입력하세요			: ");
-		String age = scanStr("사용자 나이를 입력하세요			: ");
-		String ResidentNo = scanStr("사용자 주민등록 번호를 입력하세요 	:");
+		System.out.println("=================================================================");
+		System.out.println("\t\t\t회원가입");
+		System.out.println("=================================================================");
+		
+		
+		String id = scanStr("\t사용하실 id를 입력하세요.\t: ");
+		while(!userService.idCheck(id)) {
+			System.out.println("ID가 이미 존재합니다. ");
+			id = scanStr("ID		: ");
+		}
+		String pwd = scanStr("\t사용하실 비밀번호를 입력하세요.\t: ");
+		String name = scanStr("\t사용자 명을 입력하세요.\t\t: ");
+		String phoneNumber = scanStr("\t핸드폰 번호를 입력하세요	.\t: ");
+		String age = scanStr("\t사용자 나이를 입력하세요.\t: ");
 		
 		//////////////////////////////////////////////////
 		//	사용자 회원 가입 (User db 에 insert)
@@ -19,12 +27,14 @@ public class SignUpUI extends BaseUI{
 		newUser.setId(id);
 		newUser.setPassword(pwd);
 		newUser.setName(name);
+		newUser.setPhoneNumber(phoneNumber);
 		newUser.setAge(age);
 		
 		userService.insertUser(newUser);
 		//////////////////////////////////////////////////
 
-		System.out.println("회원가입을 완료하였습니다.");
+		System.out.println("\t\t회원가입을 완료하였습니다.\n");
+		Thread.sleep(1000);
 	}
 
 }

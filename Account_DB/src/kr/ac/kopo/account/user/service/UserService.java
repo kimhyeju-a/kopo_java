@@ -18,4 +18,19 @@ public class UserService {
 	public void loginUser(String name, String password) {
 		userDAO.loginUser(name, password);
 	}
+
+	public boolean idCheck(String id) {
+		boolean bool = userDAO.idCheck(id);
+		return bool;
+	}
+
+	public String findId(String phoneNumber) {
+		String findId = userDAO.findId(phoneNumber);
+		return findId;
+	}
+
+	public boolean changePassword(String findId,String changePassword) {
+		boolean changePwd = userDAO.changePassword(findId, changePassword);
+		return changePwd;
+	}
 }
