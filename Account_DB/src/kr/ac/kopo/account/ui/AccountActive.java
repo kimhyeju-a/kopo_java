@@ -36,6 +36,9 @@ public class AccountActive extends AccountBaseUI {
 				System.out.println("1,2,3,0 만 입력해주세요.");
 				break;
 			}
+			if(ui !=null) {
+				ui.execute();
+			}
 		}
 	}
 

@@ -28,10 +28,10 @@ public class AccountDeleteUI extends AccountBaseUI {
 		
 		
 		System.out.println();
-		String deleteAccount = scanStr("\t별칭을 변경할 계좌번호를 입력하세요.\t:");
+		String deleteAccount = scanStr("\t삭제할 계좌번호를 입력하세요.\t:");
 		
 		if(accountService.checkAccountNo(deleteAccount)) {
-			throw new CheckIdPassException("\t일치하는 계좌번호가 없습니다.");
+			throw new CheckAccountException("\t일치하는 계좌번호가 없습니다.");
 		}
 		
 		if(accountService.deleteAccount(deleteAccount)) {

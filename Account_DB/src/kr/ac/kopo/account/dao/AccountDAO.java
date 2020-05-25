@@ -47,15 +47,46 @@ public class AccountDAO {
 		}
 		return false;
 	}
+	
+	/**
+	 * 출금할 계좌는 자기 자신 것만 가능
+	 */
+	public boolean checkAccountNo(String accountNo, int userNo) {
+		try {
+			conn = new ConnectionFactory().getConnection();
+
+			StringBuilder sql = new StringBuilder();
+			sql.append("select account_no ");
+			sql.append("  from t_account ");
+			sql.append(" where account_no = ? ");
+			sql.append("   and user_no = ? ");
+			pstmt = conn.prepareStatement(sql.toString());
+
+			pstmt.setString(1, accountNo);
+			pstmt.setInt(2, userNo);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				return false;
+			}
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCClose.close(conn, pstmt);
+		}
+		return false;
+	}
 
 	/**
 	 * 계좌생성 기능
 	 * @param newAccount
 	 */
-	public void insertBoard(AccountVO newAccount) {
+	public void insertAccount(AccountVO newAccount) {
 		try {
 			conn = new ConnectionFactory().getConnection();
-
+			conn.setAutoCommit(false);
 			StringBuilder sql = new StringBuilder();
 			sql.append("insert into t_account(user_no, name, account_no, bank_no, balance, alias) ");
 			sql.append(" values(?, ?, ?, ?, ?, ?) ");
@@ -75,8 +106,15 @@ public class AccountDAO {
 			pstmt.setString(6, alias);
 
 			pstmt.executeUpdate();
+			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			try {
+				conn.rollback();
+				System.out.println("\t정상등록이 되지 않았습니다. 다시 시도해주세요.");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		} finally {
 			JDBCClose.close(conn, pstmt);
 		}
@@ -282,18 +320,26 @@ public class AccountDAO {
 		boolean bool = false;
 		try {
 			conn = new ConnectionFactory().getConnection();
+			conn.setAutoCommit(false);
 			StringBuilder sql = new StringBuilder();
 			sql.append("update t_account ");
-			sql.append("   set balance = banlance + ? ");
+			sql.append("   set balance = balance + ? ");
 			sql.append(" where account_no = ? ");
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, money);
 			pstmt.setString(2, account);
 
 			pstmt.executeUpdate();
+			conn.commit();
 			bool = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			try {
+				conn.rollback();
+				System.out.println("\t업무가 취소되었습니다. 다시시도해주세요.");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		} finally {
 			JDBCClose.close(conn, pstmt);
 		}
@@ -311,7 +357,7 @@ public class AccountDAO {
 				throw new CheckAccountException("[잔액 : "+ balance +", 출금액 : "+ money +" ] 잔액이 부족합니다.");
 			}
 			conn = new ConnectionFactory().getConnection();
-			
+			conn.setAutoCommit(false);
 			StringBuilder sql = new StringBuilder();
 			sql.append("update t_account ");
 			sql.append("   set balance = balance - ? ");
@@ -321,9 +367,16 @@ public class AccountDAO {
 			pstmt.setString(2, account);
 
 			pstmt.executeUpdate();
+			conn.commit();
 			bool = true;	
 		}catch (Exception e) {
 			e.printStackTrace();
+			try {
+				conn.rollback();
+				System.out.println("\t업무가 취소되었습니다. 다시시도해주세요.");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		} finally {
 			JDBCClose.close(conn, pstmt);
 		}
@@ -345,5 +398,6 @@ public class AccountDAO {
 		}
 		return bool;
 	}
+
 
 }

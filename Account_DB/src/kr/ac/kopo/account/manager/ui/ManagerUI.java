@@ -41,6 +41,9 @@ public class ManagerUI extends ManagerBaseUI{
 				System.out.println("1,2,3,4,0 만 입력해주세요.");
 				break;
 			}
+			if(ui != null) {
+				ui.execute();
+			}
 		}
 	}
 	

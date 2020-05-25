@@ -29,7 +29,6 @@ public class AccountVO extends UserVO{
 		this.alias = alias;
 	}
 	
-	
 	public AccountVO(String bankName, String accountNo, String alias) {
 		this.bankName = bankName;
 		this.accountNo = accountNo;
@@ -44,6 +43,7 @@ public class AccountVO extends UserVO{
 		this.balance = balance;
 		this.alias = alias;
 	}
+	
 	public int getUserNo() {
 		return userNo;
 	}

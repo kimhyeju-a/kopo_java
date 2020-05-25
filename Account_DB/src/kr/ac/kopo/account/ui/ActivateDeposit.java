@@ -10,6 +10,10 @@ public class ActivateDeposit extends AccountBaseUI {
 		System.out.println("=================================================================");
 		
 		String account = scanStr("\t입금하실 계좌를 입력하세요. \t:");
+		while(accountService.checkAccountNo(account)) {
+			System.out.println("\t계좌번호가 없습니다.");
+			account = scanStr("\t입금하실 계좌를 입력하세요. \t:");
+		}
 		int money = scanInt("\t입금하실 금액을 입력하세요 \t:");
 		while(money < 0) {
 			System.out.println("\t입금할 금액은 0원 초과여야 합니다.");

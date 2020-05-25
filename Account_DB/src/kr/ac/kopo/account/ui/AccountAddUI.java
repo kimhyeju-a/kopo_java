@@ -26,7 +26,7 @@ public class AccountAddUI extends AccountBaseUI{
 		}
 		String alias = scanStr("\t계좌의 별칭을 입력해주세요 \t: ");
 		
-		int balance = scanInt("\t입금액을 입력하세요 \t:");
+		int balance = scanInt("\t입금액을 입력하세요 \t\t:");
 		while(balance < 1000) {
 			System.out.println("\t첫 계좌 생성시 입금액은 1000원 이상이어야 합니다.");
 			balance = scanInt("\t입금액을 입력하세요 \t\t:");

@@ -1,6 +1,7 @@
 package kr.ac.kopo.account.user.service;
 
 import kr.ac.kopo.account.user.dao.UserDAO;
+import kr.ac.kopo.account.user.ui.CheckIdPassException;
 import kr.ac.kopo.account.user.vo.UserVO;
 
 public class UserService {
@@ -11,7 +12,7 @@ public class UserService {
 		userDAO = new UserDAO();
 	}
 	
-	public void insertUser(UserVO newUser) {
+	public void insertUser(UserVO newUser) throws CheckIdPassException {
 		userDAO.insertUser(newUser);
 	}
 	

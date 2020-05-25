@@ -14,14 +14,19 @@ public class AccountService {
 	}
 	
 	public void insertAccount(AccountVO newAccount) {
-		accountDAO.insertBoard(newAccount);
+		accountDAO.insertAccount(newAccount);
 	}
 	
-	public boolean checkAccountNo(String accountNo) {
-		boolean bool = accountDAO.checkAccountNo(accountNo);	
+	public boolean checkAccountNo(String accountNo, int userNo) {
+		boolean bool = accountDAO.checkAccountNo(accountNo, userNo);	
 		return bool;
 	}
 
+	public boolean checkAccountNo(String account) {
+		boolean bool = accountDAO.checkAccountNo(account);
+		return bool;
+	}
+	
 	public String getName(int userNo) {
 		String name = accountDAO.getName(userNo);
 		return name;
@@ -57,13 +62,14 @@ public class AccountService {
 
 	public boolean activateWithDraw(String account, int money) {
 		boolean bool = accountDAO.activateWithDraw(account, money);
-		return false;
+		return bool;
 	}
 
 	public boolean activateTransFer(String fromAccount, String toAccount, int money) {
 		boolean bool = accountDAO.activateTransFer(fromAccount, toAccount, money);
-		return false;
+		return bool;
 	}
+
 
 
 }
