@@ -18,6 +18,11 @@ public class AccountUI extends AccountBaseUI{
 		return type;
 
 	}
+	//.......???
+	public void setList(AccountVO vo) {
+		
+		
+	}
 	
 	public void execute(int userNo) throws Exception {
 		while(true) {

@@ -66,7 +66,11 @@ public class UserDAO {
 					int userNo = rs.getInt("user_no");
 					String name = rs.getString("name");
 					System.out.println("***loginUser***");
-					new AccountUI().execute(userNo);
+//					new AccountUI().execute(userNo);
+					
+					//교수님. ...................................................
+					AccountVO vo = new AccountVO(userNo,name);
+					new AccountUI().setList(vo);
 				}else {
 					throw new CheckIdPassException("비밀번호가 일치하지 않습니다.");
 				}
