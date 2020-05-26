@@ -25,33 +25,42 @@ public class UserUI extends BaseUI {
 
 	@Override
 	public void execute() throws Exception {
-		while(true) {			
-			int type = choiceMenu();
-			IUserUI ui = null;
-			
-			switch (type) {
-			case 1:
-				ui = new SignUpUI();
-				break;
-			case 2:
-				ui = new LoginUI();
-				break;
-			case 3:
-				ui = new FindIdUI();
-				break;
-			case 4:
-				ui = new FindPasswordUI();
-				break;
-			case 0:
-				ui = new ExitUI();
-				break;
-			default:
-				System.out.println("\t잘못입력했습니다.");
+		try {
+
+			while (true) {
+				int type = choiceMenu();
+				IUserUI ui = null;
+
+				switch (type) {
+				case 1:
+					ui = new SignUpUI();
+					break;
+				case 2:
+					ui = new LoginUI();
+					break;
+				case 3:
+					ui = new FindIdUI();
+					break;
+				case 4:
+					ui = new FindPasswordUI();
+					break;
+				case 0:
+					ui = new ExitUI();
+					break;
+				default:
+					System.out.println("\t잘못입력했습니다.");
+				}
+				try {
+					if (ui != null) {
+						ui.execute();
+					}					
+				}catch(Exception e) {
+					throw new CheckIdPassException("\t숫자만 입력 가능합니다.");
+				}
 			}
-			
-			if (ui != null) {
-				ui.execute();
-			}
+
+		} catch (Exception e) {
+			throw new CheckIdPassException("\t잘못입력하셨습니다. 번호는 1,2,3,4,0 만 가능합니다.");
 		}
 	}
 
