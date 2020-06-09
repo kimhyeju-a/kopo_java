@@ -1,4 +1,4 @@
-package kr.ac.kopo.day17.homework;
+package kr.ac.kopo.day17.homework.Echo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +9,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-/*
-	java EchoClientMain 172.16.88.132 10001
- */
 public class EchoClientMain {
 
 	public static void main(String[] args) {
@@ -27,24 +24,18 @@ public class EchoClientMain {
 		try {
 			Socket socket = new Socket(ip, portNo);
 
-			// 서버에 전송할 메시지를 키보드로 입력받는 객체
 			BufferedReader keyBoard = new BufferedReader(new InputStreamReader(System.in));
 
-			// 키보드로 입력받은 메시지를 서버에 전송할 객체
 			OutputStream os = socket.getOutputStream();
 			OutputStreamWriter osw = new OutputStreamWriter(os);
 			PrintWriter pw = new PrintWriter(osw);
 
-			// 서버에서 전달된 메시지를 저장할 객체
 			InputStream is = socket.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			while (true) {
 				System.out.print("전송할 메시지를 입력하세요(quit입력시 종료) : ");
 				String msg = keyBoard.readLine();
-				//quit도 server에 전달
-//				pw.println(msg);
-//				pw.flush();
 				if(msg.equalsIgnoreCase("quit")) {
 					System.out.println("서버와의 접속종료");
 					socket.close();

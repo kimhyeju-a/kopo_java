@@ -1,4 +1,4 @@
-package kr.ac.kopo.day17.homework;
+package kr.ac.kopo.day17.homework.Echo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 class EchoServerThread extends Thread {
@@ -19,7 +18,6 @@ class EchoServerThread extends Thread {
 
 	@Override
 	public void run() {
-		// 클라이언트가 전송해준 메시지를 수신할 객체
 		InputStream is;
 		try {
 			is = client.getInputStream();
@@ -46,33 +44,4 @@ class EchoServerThread extends Thread {
 		}
 	}
 
-}
-
-public class EchoServerMain {
-
-	public static void main(String[] args) {
-		if (args.length != 1) {
-			System.out.println("-----------------------------------------------");
-			System.out.println(" 	사용법 : java EchoServerMain	port번호");
-			System.out.println("------------------------------------------------");
-			System.exit(0);
-		}
-
-		int portNo; // 포켓번호를 담을 변수
-		ServerSocket server = null;
-		portNo = Integer.parseInt(args[0]);
-		try {
-			server = new ServerSocket(portNo);
-			while (true) {
-
-				Socket client = server.accept();
-				EchoServerThread est = new EchoServerThread(client);
-				System.out.println("["+client.getInetAddress()+"] 님이 접속하셨습니다.");
-				est.start();
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
