@@ -1,6 +1,5 @@
 package kr.ac.kopo.day16;
 
-
 class Data {
 	public synchronized void a() {
 		try {
@@ -18,7 +17,7 @@ class Data {
 			notify();//떙! 
 			System.out.println("b() 메소드 호출...");
 			
-			wait();
+//			wait();
 		} catch (Exception e) {
 		}
 	}
