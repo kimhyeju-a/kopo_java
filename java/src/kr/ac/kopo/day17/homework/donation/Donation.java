@@ -19,7 +19,7 @@ public class Donation {
 			if(cnt[idx] == 10) {
 				System.out.println(callNum + "번 콜센터에서의 총 모금액 : " + donationTotal[idx]);
 			}
-			Thread.sleep(10);
+//			Thread.sleep(10);
 			notifyAll(); // 떙!
 		} catch (Exception e) {
 		}

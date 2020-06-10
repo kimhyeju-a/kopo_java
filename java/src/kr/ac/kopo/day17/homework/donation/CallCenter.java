@@ -13,7 +13,11 @@ public class CallCenter extends Thread {
 	public synchronized void run() {
 		for (int i = 0; i < 10; i++) {
 			donation.call(callNum);
-
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
